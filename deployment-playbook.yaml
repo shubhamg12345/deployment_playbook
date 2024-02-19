@@ -19,7 +19,7 @@
   tasks:
   - name: pulling master branch
     command: git clone https://github.com/shubhamg12345/ansible.git -b master /mnt
-    command: mv /mnt/index.html /var/www/html
+    command: mv /root/index.html /var/www/html
 	
 - hosts: 22Q1
   become: yes
@@ -31,4 +31,4 @@
   - name: pulling 22Q1 branch
     command: git clone https://github.com/shubhamg12345/ansible.git -b 22@1 /mnt
   - name: deployment
-    command: mv /mnt/index.html /var/www/html
+    command: mv /root/index.html /var/www/html
