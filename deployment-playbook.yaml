@@ -1,0 +1,34 @@
+- hosts: master,22Q1
+  become: yes
+  user: root
+  connection: ssh
+  gather_facts: yes
+  
+  tasks:
+  - name: install git
+    action: dnf pkg=git state=present
+	
+	
+	
+- hosts: master
+  become: yes
+  user: root
+  connection: ssh
+  gather_facts: yes
+
+  tasks:
+  - name: pulling master branch
+    command: git clone https://github.com/shubhamg12345/ansible.git -b master /mnt
+    command: mv /mnt/index.html /var/www/html
+	
+- hosts: 22Q1
+  become: yes
+  user: root
+  connection: ssh
+  gather_facts: yes
+
+  tasks:
+  - name: pulling 22Q1 branch
+    command: git clone https://github.com/shubhamg12345/ansible.git -b 22@1 /mnt
+  - name: deployment
+    command: mv /mnt/index.html /var/www/html
