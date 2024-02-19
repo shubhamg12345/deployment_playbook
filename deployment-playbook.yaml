@@ -2,8 +2,7 @@
   become: yes
   user: svcacc
   connection: ssh
-  gather_facts: yes
-  
+  gather_facts: yes  
   tasks:
   - name: install git
     action: dnf pkg=git state=present
@@ -11,28 +10,23 @@
     action: dnf pkg=httpd state=present
   - name: start httpd
     action: service name=httpd state=started
-	
-	
 - hosts: master
   become: yes
   user: svcacc
   connection: ssh
   gather_facts: yes
-
   tasks:
   - name: pulling master branch
-    command: git clone https://github.com/shubhamg12345/ansible.git -b master
+    command: sudo git clone https://github.com/shubhamg12345/ansible.git -b master
   - name: deployment
     command: mv /home/svcacc/index.html /var/www/html
-	
 - hosts: 22Q1
   become: yes
   user: svcacc
   connection: ssh
   gather_facts: yes
-
   tasks:
   - name: pulling 22Q1 branch
-    command: git clone https://github.com/shubhamg12345/ansible.git -b 22Q1
+    command: sudo git clone https://github.com/shubhamg12345/ansible.git -b 22Q1
   - name: deployment
     command: mv /home/svcacc/index.html /var/www/html
