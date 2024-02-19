@@ -5,9 +5,9 @@
   gather_facts: yes  
   tasks:
   - name: install git
-    action: dnf pkg=git state=present
+    command: sudo yum install git -y
   - name: install httpd
-    action: dnf pkg=httpd state=present
+    command: sudo yum install httpd -y
   - name: start httpd
     action: service name=httpd state=started
 - hosts: master
